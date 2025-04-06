@@ -6,6 +6,7 @@ import {
   faXTwitter,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -13,18 +14,34 @@ const Footer = () => {
       <footer className="bg-black text-white py-10">
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between space-y-10 md:space-y-0">
           {/* Social Icons */}
-          <div className="flex space-x-10 text-white text-xl">
+          <div className="flex space-x-10 text-white text-xl hover:cursor-pointer">
             <a href="#" aria-label="Facebook">
-              <FontAwesomeIcon icon={faFacebookF} transform={"shrink-2"} />
+              <FontAwesomeIcon
+                icon={faFacebookF}
+                className="hover:text-gray-200 hover:text-2xl transition-all ease-in-out duration-300"
+                transform={"grow-5"}
+              />
             </a>
             <a href="#" aria-label="Twitter">
-              <FontAwesomeIcon icon={faLinkedinIn} />
+              <FontAwesomeIcon
+                icon={faLinkedinIn}
+                className="hover:text-gray-200 hover:text-2xl transition-all ease-in-out duration-300"
+                transform={"grow-7"}
+              />
             </a>
             <a href="#" aria-label="X">
-              <FontAwesomeIcon icon={faXTwitter} />
+              <FontAwesomeIcon
+                icon={faXTwitter}
+                className="hover:text-gray-200 hover:text-2xl transition-all ease-in-out duration-300"
+                transform={"grow-7"}
+              />
             </a>
             <a href="#" aria-label="Instagram">
-              <FontAwesomeIcon icon={faInstagram} />
+              <FontAwesomeIcon
+                icon={faInstagram}
+                className="hover:text-gray-200 hover:text-2xl transition-all ease-in-out duration-300"
+                transform={"grow-7"}
+              />
             </a>
           </div>
 
@@ -39,7 +56,7 @@ const Footer = () => {
             <form className="flex flex-col items-center space-y-3">
               <input
                 type="email"
-                placeholder="Enter your email here *"
+                placeholder="Enter your email"
                 className="bg-black border border-white px-4 py-2 w-64 placeholder-white text-white text-sm"
               />
               <label className="flex items-center space-x-2 text-sm">
@@ -48,7 +65,7 @@ const Footer = () => {
               </label>
               <button
                 type="submit"
-                className="border border-white px-4 py-2 text-sm hover:bg-white hover:text-black transition"
+                className="border border-white px-4 py-2 text-sm hover:bg-white hover:cursor-pointer hover:text-black transition-all ease-in-out duration-300"
               >
                 Subscribe
               </button>
@@ -61,6 +78,11 @@ const Footer = () => {
           {/* Copyright */}
           <div className="text-sm text-center md:text-right">
             <p>© 2025 by Company name.</p>
+            <Link to="/contact">
+              <a className="text-sm text-center md:text-right hover:underline hover:cursor-pointer">
+                Contact us
+              </a>
+            </Link>
           </div>
         </div>
       </footer>
