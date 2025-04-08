@@ -1,97 +1,141 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { PiMagnifyingGlassBold } from "react-icons/pi";
 import { IoMdArrowDropdown } from "react-icons/io";
-import { FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import Dropdown from "./Dropdown";
+import { NavItems } from "./NavItems";
+import {
+  PackagesDropdown,
+  BlogsDropdown,
+  DestinationsDropdown,
+} from "./Dropdown";
 
 const Navbar = () => {
-  const [click, setClick] = useState(false);
-
-  const handleClick = () => setClick(!click);
-
-  const closeMobileMenu = () => setClick(false);
-
-  const [dropDown, setDropDown] = useState(false);
+  const [dropdown, setDropdown] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
     <div>
       <nav className="flex bg-gray-800 text-teal-50 items-center justify-between px-8 py-4 border-b border-white-300">
-        <Link to="/">
-          <div onClick={handleClick}>
-            <a className="text-2xl font-bold text-white-700">COMPANY NAME</a>
-          </div>
+        <Link to="/" className="text-2xl font-bold text-white-700">
+          COMPANY NAME
         </Link>
-        <section className={click ? "nav-menu active" : "nav-menu"}>
-          <div className="flex items-center space-x-6">
-            <Link to="/">
-              <a
-                href="#"
-                className="text-white-700 hover:text-white-500 hover:underline transition-all ease-in-out duration-300"
-                onClick={closeMobileMenu}
-              >
-                Home
-              </a>
-            </Link>
-            <Link to="/packages">
-              <a
-                href="#"
-                className="text-white-700 ml-100 hover:text-white-500 hover:underline transition-all ease-in-out duration-300"
-                onClick={closeMobileMenu}
-              >
-                Packages <IoMdArrowDropdown className="inline" />
-              </a>
-            </Link>
-            {dropDown && <Dropdown />}
-            <Link to="/destinations">
-              <a
-                href="#"
-                className="text-white-700 hover:text-white-500 hover:underline transition-all ease-in-out duration-300"
-                onClick={closeMobileMenu}
-              >
-                Destinations <IoMdArrowDropdown className="inline" />
-              </a>
-            </Link>
-            <Link to="/blogs">
-              <a
-                href="#"
-                className="text-white-700 hover:text-white-500 hover:underline transition-all ease-in-out duration-300"
-                onClick={closeMobileMenu}
-              >
-                Blogs <IoMdArrowDropdown className="inline" />
-              </a>
-            </Link>
-            <Link to="/contact">
-              <a
-                href="#"
-                className="text-white-700 hover:text-white-500 hover:underline transition-all ease-in-out duration-300"
-                onClick={closeMobileMenu}
-              >
-                Contact
-              </a>
-            </Link>
-          </div>
-        </section>
-        <div className="flex items-center space-x-4">
-          <div className="relative">
-            <FontAwesomeIcon icon={faMagnifyingGlass} transform="" />
-            <input
-              type="text"
-              placeholder=""
-              className="p-2 mb-1 focus:outline-none"
-            />
-          </div>
+        <ul>
+          {NavItems.map((item, index) => {
+            const isHovered = hoveredIndex === index;
+            if (item.title === "Packages") {
+              return (
+                <li
+                  key={index}
+                  className="inline-block mx-4"
+                  onMouseEnter={() => {
+                    setDropdown(true);
+                    setHoveredIndex(1);
+                  }}
+                  onMouseLeave={() => {
+                    setDropdown(false);
+                    setHoveredIndex(null);
+                  }}
+                >
+                  <Link
+                    to={item.path}
+                    className="text-white-700 font-medium hover:text-white-500 hover:underline transition-all ease-in-out duration-300"
+                  >
+                    {item.title}
+                    {(item.title === "Packages" ||
+                      item.title === "Destinations" ||
+                      item.title === "Blogs") && (
+                      <IoMdArrowDropdown className="inline" />
+                    )}
+                  </Link>
+                  {dropdown && isHovered && <PackagesDropdown />}
+                </li>
+              );
+            }
+            if (item.title === "Blogs") {
+              return (
+                <li
+                  key={index}
+                  className="inline-block mx-4"
+                  onMouseEnter={() => {
+                    setDropdown(true);
+                    setHoveredIndex(2);
+                  }}
+                  onMouseLeave={() => {
+                    setDropdown(false);
+                    setHoveredIndex(null);
+                  }}
+                >
+                  <Link
+                    to={item.path}
+                    className="text-white-700 font-medium hover:text-white-500 hover:underline transition-all ease-in-out duration-300"
+                  >
+                    {item.title}
+                    {(item.title === "Packages" ||
+                      item.title === "Destinations" ||
+                      item.title === "Blogs") && (
+                      <IoMdArrowDropdown className="inline" />
+                    )}
+                  </Link>
+                  {isHovered && <BlogsDropdown />}
+                </li>
+              );
+            }
+            if (item.title === "Destinations") {
+              return (
+                <li
+                  key={index}
+                  className="inline-block mx-4"
+                  onMouseEnter={() => {
+                    setDropdown(true);
+                    setHoveredIndex(3);
+                  }}
+                  onMouseLeave={() => {
+                    setDropdown(false);
+                    setHoveredIndex(null);
+                  }}
+                >
+                  <Link
+                    to={item.path}
+                    className="text-white-700 font-medium hover:text-white-500 hover:underline transition-all ease-in-out duration-300"
+                  >
+                    {item.title}
+                    {(item.title === "Packages" ||
+                      item.title === "Destinations" ||
+                      item.title === "Blogs") && (
+                      <IoMdArrowDropdown className="inline" />
+                    )}
+                  </Link>
+                  {isHovered && <DestinationsDropdown />}
+                </li>
+              );
+            }
 
-          {click ? (
-            <a href="#" onClick={handleClick}>
-              <FaTimes />
-            </a>
-          ) : (
-            <a href="#" onClick={handleClick}>
-              <FaBars />
-            </a>
-          )}
+            return (
+              <div className="inline-block mx-4">
+                <li key={index} className="inline-block mx-4">
+                  <Link
+                    to={item.path}
+                    className="text-white-700 m-10 font-medium hover:text-white-500 hover:underline transition-all ease-in-out duration-300"
+                  >
+                    {item.title}
+                    {(item.title === "Packages" ||
+                      item.title === "Destinations" ||
+                      item.title === "Blogs") && (
+                      <IoMdArrowDropdown className="inline" />
+                    )}
+                  </Link>
+                </li>
+              </div>
+            );
+          })}
+        </ul>
+        <div className="flex items-center">
+          <PiMagnifyingGlassBold className=" mr-0" />
+          <input
+            type="text"
+            placeholder=""
+            className="p-2 mb-1 focus:outline-none ml-0"
+          ></input>
         </div>
       </nav>
     </div>
