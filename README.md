@@ -43,7 +43,7 @@ This project is a blog application built using React. It features a sticky navig
 
 ## Screenshot
 
-![Screenshot of the Blog Project](./screenshot.png)
+![Screenshot of the Blog Project](./Screenshot.png)
 
 ## How to Use
 
