@@ -1,78 +1,59 @@
-# Blog Project
+# GDG React Capstone Team 3
 
-This is an ongoing blog website project built using **React**, **React Router DOM**, and **FontAwesome**.
+This project is a blog application built using React. It features a sticky navigation bar and footer, implemented with `react-router-dom` for routing and `react-icons` for icons.
 
 ## Features
 
-- **Dynamic Routing**: Powered by React Router DOM for seamless navigation.
-- **Responsive Design**: Ensures a great user experience across devices.
-- **FontAwesome Integration**: Adds visually appealing icons to enhance UI/UX.
+- **Sticky Navigation Bar**: A responsive navigation bar that remains fixed at the top of the page.
+- **Footer**: A sticky footer with useful links and information.
+- **Routing**: Seamless navigation between pages using `react-router-dom`.
+- **Icons**: Beautiful icons integrated using `react-icons`.
 
 ## Technologies Used
 
 - **React**: For building the user interface.
-- **React Router DOM**: For managing routing and navigation.
-- **FontAwesome**: For adding icons and improving design aesthetics.
+- **React Router DOM**: For handling routing.
+- **React Icons**: For adding icons to the navigation bar and footer.
 
 ## Installation
 
 1. Clone the repository:
+
     ```bash
-    git clone https://github.com/your-username/blog-project.git
+    git clone https://github.com/your-username/gdg-react-capstone-team3.git
     ```
+
 2. Navigate to the project directory:
+
     ```bash
-    cd blog-project
+    cd gdg-react-capstone-team3
     ```
+
 3. Install dependencies:
+
     ```bash
     npm install
     ```
+
 4. Start the development server:
+
     ```bash
     npm start
     ```
 
-## Folder Structure
+## Screenshot
 
-```
-/src
-  /components    # Reusable components
-  /pages         # Application pages
-  /assets        # Static assets like images and styles
-  /routes        # Route definitions
-```
+![Screenshot of the Blog Project](./screenshot.png)
 
-## Usage
+## How to Use
 
-- Navigate through the blog using the menu.
-- Explore posts and categories dynamically rendered using React.
+1. Navigate through the blog using the sticky navigation bar.
+2. Explore the footer for additional links and information.
 
 ## Contributing
 
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository.
-2. Create a new branch:
-    ```bash
-    git checkout -b feature-name
-    ```
-3. Commit your changes:
-    ```bash
-    git commit -m "Add feature-name"
-    ```
-4. Push to the branch:
-    ```bash
-    git push origin feature-name
-    ```
-5. Open a pull request.
+Contributions are welcome! Please fork the repository and submit a pull request.
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
-
-## Acknowledgements
-
-- [React](https://reactjs.org/)
-- [React Router DOM](https://reactrouter.com/)
-- [FontAwesome](https://fontawesome.com/)
+This project is licensed under the MIT License.
