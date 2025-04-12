@@ -1,11 +1,25 @@
-import React, { useState } from "react";
-import { Packages } from "./NavItems";
-import { Blogs } from "./NavItems";
-import { Destinations } from "./NavItems";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export const PackagesDropdown = () => {
   const [dropdown, setDropdown] = useState(false);
+  const [packages, setPackages] = useState([]);
+
+  useEffect(() => {
+    const fetchPackages = async () => {
+      try {
+        const response = await fetch(
+          "https://67f9ff65094de2fe6ea2dc4b.mockapi.io/packages"
+        );
+        const data = await response.json();
+        setPackages(data);
+      } catch (error) {
+        console.error("Error fetching packages:", error);
+      }
+    };
+
+    fetchPackages();
+  }, []);
 
   return (
     <ul
@@ -16,28 +30,43 @@ export const PackagesDropdown = () => {
       }
       onClick={() => setDropdown(!dropdown)}
     >
-      {Packages.map((item, index) => {
-        return (
-          <li
-            key={index}
-            className="px-4 py-2 text-white hover:bg-gray-900 transition-all ease-in-out duration-300 hover:cursor-pointer"
+      {packages.map((item, index) => (
+        <li
+          key={index}
+          className="px-4 py-2 text-white hover:bg-gray-900 transition-all ease-in-out duration-300 hover:cursor-pointer"
+        >
+          <Link
+            onClick={() => setDropdown(false)}
+            to={item.path}
+            className="text-white-700 font-medium transition-all ease-in-out duration-300"
           >
-            <Link
-              onClick={() => setDropdown(false)}
-              to={item.path}
-              className="text-white-700 font-medium transition-all ease-in-out duration-300"
-            >
-              {item.title}
-            </Link>
-          </li>
-        );
-      })}
+            {item.title}
+          </Link>
+        </li>
+      ))}
     </ul>
   );
 };
 
 export const BlogsDropdown = () => {
   const [dropdown, setDropdown] = useState(false);
+  const [blogs, setBlogs] = useState([]);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const response = await fetch(
+          "https://67f9ff65094de2fe6ea2dc4b.mockapi.io/blogs"
+        );
+        const data = await response.json();
+        setBlogs(data);
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
+      }
+    };
+
+    fetchBlogs();
+  }, []);
 
   return (
     <ul
@@ -48,28 +77,43 @@ export const BlogsDropdown = () => {
       }
       onClick={() => setDropdown(!dropdown)}
     >
-      {Blogs.map((item, index) => {
-        return (
-          <li
-            key={index}
-            className="px-4 py-2 text-white hover:bg-gray-900 transition-all ease-in-out duration-300 hover:cursor-pointer"
+      {blogs.map((item, index) => (
+        <li
+          key={index}
+          className="px-4 py-2 text-white hover:bg-gray-900 transition-all ease-in-out duration-300 hover:cursor-pointer"
+        >
+          <Link
+            onClick={() => setDropdown(false)}
+            to={item.path}
+            className="text-white-700 font-medium transition-all ease-in-out duration-300"
           >
-            <Link
-              onClick={() => setDropdown(false)}
-              to={item.path}
-              className="text-white-700 font-medium transition-all ease-in-out duration-300"
-            >
-              {item.title}
-            </Link>
-          </li>
-        );
-      })}
+            {item.title}
+          </Link>
+        </li>
+      ))}
     </ul>
   );
 };
 
 export const DestinationsDropdown = () => {
   const [dropdown, setDropdown] = useState(false);
+  const [destinations, setDestinations] = useState([]);
+
+  useEffect(() => {
+    const fetchDestinations = async () => {
+      try {
+        const response = await fetch(
+          "https://67f9ff65094de2fe6ea2dc4b.mockapi.io/destinations"
+        );
+        const data = await response.json();
+        setDestinations(data);
+      } catch (error) {
+        console.error("Error fetching destinations:", error);
+      }
+    };
+
+    fetchDestinations();
+  }, []);
 
   return (
     <ul
@@ -80,22 +124,20 @@ export const DestinationsDropdown = () => {
       }
       onClick={() => setDropdown(!dropdown)}
     >
-      {Destinations.map((item, index) => {
-        return (
-          <li
-            key={index}
-            className="px-4 py-2 text-white hover:bg-gray-900 transition-all ease-in-out duration-300 hover:cursor-pointer"
+      {destinations.map((item, index) => (
+        <li
+          key={index}
+          className="px-4 py-2 text-white hover:bg-gray-900 transition-all ease-in-out duration-300 hover:cursor-pointer"
+        >
+          <Link
+            onClick={() => setDropdown(false)}
+            to={item.path}
+            className="text-white-700 font-medium transition-all ease-in-out duration-300"
           >
-            <Link
-              onClick={() => setDropdown(false)}
-              to={item.path}
-              className="text-white-700 font-medium transition-all ease-in-out duration-300"
-            >
-              {item.title}
-            </Link>
-          </li>
-        );
-      })}
+            {item.title}
+          </Link>
+        </li>
+      ))}
     </ul>
   );
 };
